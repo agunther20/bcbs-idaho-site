@@ -78,6 +78,60 @@ Bronze plans have the lowest monthly premiums but highest out-of-pocket costs. B
 - Lowest possible premiums
 - Primarily protects against worst-case medical emergencies
 
+### 2026 Access Plans
+
+Access plans are in-network plans designed for different levels of care needs and budgets. All Access plans include $0 preventive care and $0 child primary care/telehealth.
+
+#### Access Fit
+- **Best for**: Budget-conscious individuals who want basic coverage with low premiums
+- **Medical Deductible**: $8,000 individual
+- **Out-of-Pocket Max (MOOP)**: $10,600
+- **Rx Deductible**: Integrated Medical & Rx Deductible
+- **Medical Coinsurance**: 50%
+- **Primary Care/Telehealth**: $40 copay (up to 3 visits, then 50% after deductible)
+- **Urgent Care/Telehealth**: $40 copay (up to 3 visits, then 50% after deductible)
+- **Specialist/Telehealth**: 50% after deductible
+- **Mental Health & Substance Abuse**: 50% after deductible
+- **Maternity Care**: 50% after deductible
+- **Lab Work, X-rays & Imaging**: 50% after deductible
+- **In-Patient Hospital**: 50% after deductible
+- **Preventive Care**: $0
+- **Preventive Dental (adult & child)**: $20
+
+#### Access Nurture
+- **Best for**: People who want moderate coverage with lower coinsurance and upfront copays
+- **Medical Deductible**: $6,000 individual
+- **Out-of-Pocket Max (MOOP)**: $10,600
+- **Rx Deductible**: Integrated Medical & Rx Deductible
+- **Medical Coinsurance**: 35%
+- **Primary Care/Telehealth**: $40 copay
+- **Urgent Care/Telehealth**: $50 copay
+- **Specialist/Telehealth**: $100 copay
+- **Mental Health & Substance Abuse**: $40 copay
+- **Maternity Care**: 35% after deductible
+- **Lab Work, X-rays & Imaging**: 35% after deductible
+- **In-Patient Hospital**: 35% after deductible
+- **Preventive Care**: $0
+- **Preventive Dental (adult & child)**: $20
+
+#### Access Pathway
+- **Best for**: People who want the lowest deductible Access plan with affordable copays
+- **Medical Deductible**: $4,000 individual
+- **Out-of-Pocket Max (MOOP)**: $10,600
+- **Rx Deductible**: $1,000 (separate from medical)
+- **Medical Coinsurance**: 50%
+- **Primary Care/Telehealth**: $10 copay
+- **Urgent Care/Telehealth**: $50 copay
+- **Specialist/Telehealth**: $75 copay
+- **Mental Health & Substance Abuse**: $10 copay
+- **Maternity Care**: 50% after deductible
+- **Lab Work, X-rays & Imaging**: $20 copay
+- **In-Patient Hospital**: 50% after deductible
+- **Preventive Care**: $0
+- **Preventive Dental (adult & child)**: $20
+
+---
+
 ### Key ACA Benefits (All Plans)
 - **Preventive Care**: $0 copay — annual wellness visits, immunizations, cancer screenings
 - **Emergency Room**: Covered at all tiers (copay/coinsurance varies)

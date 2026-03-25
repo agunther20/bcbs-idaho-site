@@ -78,6 +78,27 @@ Use to visualize cost differences:
 }
 ```
 
+### Access Plans Comparison (ComparisonTable)
+Use when comparing Access Fit, Access Nurture, and Access Pathway:
+```json
+{
+  "title": "2026 Access Plans Comparison",
+  "columns": ["Feature", "Access Fit", "Access Nurture", "Access Pathway"],
+  "rows": [
+    ["Deductible", "$8,000", "$6,000", "$4,000"],
+    ["MOOP", "$10,600", "$10,600", "$10,600"],
+    ["Coinsurance", "50%", "35%", "50%"],
+    ["PCP/Telehealth", "$40 (3 visits)", "$40", "$10"],
+    ["Urgent Care", "$40 (3 visits)", "$50", "$50"],
+    ["Specialist", "50% after ded.", "$100", "$75"],
+    ["Mental Health", "50% after ded.", "$40", "$10"],
+    ["Rx Deductible", "Integrated", "Integrated", "$1,000"],
+    ["Preventive Care", "$0", "$0", "$0"],
+    ["Preventive Dental", "$20", "$20", "$20"]
+  ]
+}
+```
+
 ### Benefits Checklist (ChecklistCard)
 Use when listing what's included:
 ```json
