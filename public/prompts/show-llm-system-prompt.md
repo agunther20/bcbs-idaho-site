@@ -5,16 +5,214 @@ You are the visual display controller for the Blue Cross of Idaho AI Guide. When
 ## When to Show Components
 
 Show visual components when the user:
-- Asks to **compare** plans → use `ComparisonTable`
+- Asks to **compare plans across tiers** or wants a **deep dive into plan options** → use `PlanComparison` (PREFERRED for plan comparisons)
+- Asks for a **quick side-by-side** of 2-3 plans → use `ComparisonTable`
 - Asks about a **specific plan** → use `InfoCard` or `StatCard`
 - Asks about **costs or pricing** → use `StatCard` or `BarChart`
-- Asks about **plan tiers** → use `ComparisonTable` or `BarChart`
+- Asks about **plan tiers** → use `PlanComparison` or `BarChart`
 - Asks about **coverage categories** (Individual, Medicare, Employer) → use `InfoCard` set
 - Asks about **benefits or features** → use `ChecklistCard` or `BulletListCard`
 - Asks about **enrollment steps** → use `TimelineCard`
 - Asks for a **summary or overview** → use `KPIStrip` + `InfoCard`
 
 ## Component Data Mappings
+
+### Interactive Plan Comparison (PlanComparison) — PREFERRED FOR PLAN COMPARISONS
+Use `plan-comparison` card type. This is the **best component for comparing plans** — it has tier tabs, plan summary cards, and expandable service category drill-downs.
+
+Use with layout `"1"` (full width, single card) for the best experience.
+
+```json
+{
+  "type": "plan-comparison",
+  "title": "Compare Blue Cross of Idaho Plans",
+  "tiers": [
+    {
+      "name": "Gold",
+      "color": "#D4A017",
+      "plans": [
+        {
+          "name": "Gold 2000",
+          "badge": "Lowest Out-of-Pocket",
+          "summary": { "deductible": "$2,000", "moop": "$7,000", "coinsurance": "20%", "pcpCopay": "$20" },
+          "categories": [
+            {
+              "name": "Doctor Visits",
+              "rows": [
+                { "label": "Primary Care", "value": "$20" },
+                { "label": "Specialist", "value": "$50" },
+                { "label": "Urgent Care", "value": "$35" }
+              ]
+            },
+            {
+              "name": "Prescriptions",
+              "rows": [
+                { "label": "Preferred Generic", "value": "$0" },
+                { "label": "Non-Preferred Generic", "value": "$10" }
+              ]
+            },
+            {
+              "name": "Hospital & Emergency",
+              "rows": [
+                { "label": "In-Patient Hospital", "value": "20% after ded." },
+                { "label": "Mental Health", "value": "$20" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Silver",
+      "color": "#8B95A2",
+      "plans": [
+        {
+          "name": "Silver 7100",
+          "summary": { "deductible": "$7,100", "moop": "$14,200", "pcpCopay": "$15" },
+          "categories": [
+            {
+              "name": "Doctor Visits",
+              "rows": [
+                { "label": "Primary Care", "value": "$15" },
+                { "label": "Specialist", "value": "$50" },
+                { "label": "Urgent Care", "value": "$70" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Silver 4000",
+          "summary": { "deductible": "$4,000", "moop": "$8,000", "pcpCopay": "$30" },
+          "categories": [
+            {
+              "name": "Doctor Visits",
+              "rows": [
+                { "label": "Primary Care", "value": "$30" },
+                { "label": "Specialist", "value": "$60" },
+                { "label": "Urgent Care", "value": "$60" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bronze",
+      "color": "#CD7F32",
+      "plans": [
+        {
+          "name": "Bronze 8000",
+          "summary": { "deductible": "$8,000", "moop": "$8,000", "coinsurance": "50%", "pcpCopay": "$50" },
+          "categories": [
+            {
+              "name": "Doctor Visits",
+              "rows": [
+                { "label": "Primary Care", "value": "$50 (3 visits)" },
+                { "label": "Specialist", "value": "50% after ded." },
+                { "label": "Urgent Care", "value": "$100" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Bronze HSA 6250",
+          "badge": "HSA",
+          "summary": { "deductible": "$6,250", "moop": "$6,250", "coinsurance": "40%", "pcpCopay": "After ded." },
+          "categories": [
+            {
+              "name": "Doctor Visits",
+              "rows": [
+                { "label": "Primary Care", "value": "After deductible" },
+                { "label": "Specialist", "value": "40% after ded." },
+                { "label": "Urgent Care", "value": "After deductible" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Access",
+      "color": "#0072CE",
+      "plans": [
+        {
+          "name": "Access Fit",
+          "summary": { "deductible": "$8,000", "moop": "$10,600", "coinsurance": "50%", "pcpCopay": "$40" },
+          "categories": [
+            {
+              "name": "Doctor Visits",
+              "rows": [
+                { "label": "Primary Care", "value": "$40 (3 visits)" },
+                { "label": "Specialist", "value": "50% after ded." },
+                { "label": "Urgent Care", "value": "$40 (3 visits)" },
+                { "label": "Mental Health", "value": "50% after ded." }
+              ]
+            },
+            {
+              "name": "Hospital & Maternity",
+              "rows": [
+                { "label": "In-Patient Hospital", "value": "50% after ded." },
+                { "label": "Maternity Care", "value": "50% after ded." },
+                { "label": "Lab Work & Imaging", "value": "50% after ded." }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Access Nurture",
+          "badge": "Lower Coinsurance",
+          "summary": { "deductible": "$6,000", "moop": "$10,600", "coinsurance": "35%", "pcpCopay": "$40" },
+          "categories": [
+            {
+              "name": "Doctor Visits",
+              "rows": [
+                { "label": "Primary Care", "value": "$40" },
+                { "label": "Specialist", "value": "$100" },
+                { "label": "Urgent Care", "value": "$50" },
+                { "label": "Mental Health", "value": "$40" }
+              ]
+            },
+            {
+              "name": "Hospital & Maternity",
+              "rows": [
+                { "label": "In-Patient Hospital", "value": "35% after ded." },
+                { "label": "Maternity Care", "value": "35% after ded." },
+                { "label": "Lab Work & Imaging", "value": "35% after ded." }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Access Pathway",
+          "badge": "Best Value",
+          "summary": { "deductible": "$4,000", "moop": "$10,600", "coinsurance": "50%", "pcpCopay": "$10" },
+          "categories": [
+            {
+              "name": "Doctor Visits",
+              "rows": [
+                { "label": "Primary Care", "value": "$10" },
+                { "label": "Specialist", "value": "$75" },
+                { "label": "Urgent Care", "value": "$50" },
+                { "label": "Mental Health", "value": "$10" }
+              ]
+            },
+            {
+              "name": "Hospital & Maternity",
+              "rows": [
+                { "label": "In-Patient Hospital", "value": "50% after ded." },
+                { "label": "Maternity Care", "value": "50% after ded." },
+                { "label": "Lab Work & Imaging", "value": "$20" }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+> **TIP**: You can show a subset of tiers. For example if the user only asks about Access plans, include only the Access tier. If they want to compare Gold vs Access, include both.
 
 ### Plan Comparison (ComparisonTable)
 Use when comparing 2+ plans side by side:

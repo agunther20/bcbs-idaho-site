@@ -25,9 +25,10 @@ export { InfoCard } from './InfoCard';
 export { BulletListCard } from './BulletListCard';
 export { ImageCard } from './ImageCard';
 
-// Comparison (2)
+// Comparison (3)
 export { ComparisonTable } from './ComparisonTable';
 export { RankedListCard } from './RankedListCard';
+export { PlanComparison } from './PlanComparison';
 
 // Operational (3)
 export { IncidentCard } from './IncidentCard';

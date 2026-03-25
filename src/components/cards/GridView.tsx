@@ -14,8 +14,8 @@ import {
     PersonCard, OrgRoster,
     // Rich Content (4)
     ChecklistCard, InfoCard, BulletListCard, ImageCard,
-    // Comparison (2)
-    ComparisonTable, RankedListCard,
+    // Comparison (3)
+    ComparisonTable, RankedListCard, PlanComparison,
     // Operational (3)
     IncidentCard, PipelineCard, RiskMatrixCard,
     // Executive Action (2)
@@ -71,6 +71,7 @@ const CARD_MAP: Record<string, React.FC<any>> = {
     // Comparison (2)
     'comparison-table': ComparisonTable,
     'ranked-list': RankedListCard,
+    'plan-comparison': PlanComparison,
     // Operational (3)
     'incident-card': IncidentCard,
     'pipeline-card': PipelineCard,
@@ -106,7 +107,7 @@ const CARD_SIZE: Record<string, number> = {
     // lg (expansive) — charts, tables, maps → flex-grow: 3
     'bar-chart': 3, 'donut': 3, 'line-chart': 3, 'table': 3,
     'heatmap': 3, 'waterfall': 3, 'stacked-bar': 3,
-    'comparison-table': 3, 'incident-card': 3, 'risk-matrix': 3,
+    'comparison-table': 3, 'incident-card': 3, 'risk-matrix': 3, 'plan-comparison': 3,
     // Executive Action
     'decision-card': 2, 'delegation-card': 2,
     // Cross-Domain Intelligence
