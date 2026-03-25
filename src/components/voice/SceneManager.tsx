@@ -38,7 +38,9 @@ export function SceneManager() {
   const hasHistory = sceneHistory.length > 1;
 
   return (
-    <div id="scene-root" className="relative flex flex-col w-full h-full min-h-0 text-white">
+    <div id="scene-root" className="relative flex flex-col w-full h-full min-h-0" style={{ color: 'var(--theme-scene-text)' }}>
+      {/* Content container — constrained width on desktop to keep avatar visible */}
+      <div className="flex flex-col h-full min-h-0 w-full lg:max-w-[65vw]">
       {/* Avatar background layer */}
       {avatarEnabled && avatarVisible && avatarVideoTrack && (
         <div className="absolute inset-0 z-0 opacity-30">
@@ -63,7 +65,8 @@ export function SceneManager() {
           {hasHistory && (
             <button
               onClick={navigateSceneBack}
-              className="flex items-center gap-1 text-sm text-white/60 hover:text-white transition-colors"
+              className="flex items-center gap-1 text-sm transition-colors"
+              style={{ color: 'var(--theme-scene-text-muted)' }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +86,7 @@ export function SceneManager() {
           )}
         </div>
         {currentScene?.badge && (
-          <span className="text-xs font-medium text-white/50 tracking-wider uppercase font-data">
+          <span className="text-xs font-medium tracking-wider uppercase font-data" style={{ color: 'var(--theme-scene-text-muted)' }}>
             {currentScene.badge}
           </span>
         )}
@@ -93,12 +96,12 @@ export function SceneManager() {
       {(currentScene?.title || currentScene?.subtitle) && (
         <div className="relative z-10 px-6 pb-4 shrink-0">
           {currentScene?.title && (
-            <h1 className="text-2xl font-bold tracking-tight font-hero">
+            <h1 className="text-2xl font-bold tracking-tight font-hero" style={{ color: 'var(--theme-scene-text)' }}>
               {currentScene.title}
             </h1>
           )}
           {currentScene?.subtitle && (
-            <p className="text-sm text-white/60 mt-1 font-voice">
+            <p className="text-sm mt-1 font-voice" style={{ color: 'var(--theme-scene-text-muted)' }}>
               {currentScene.subtitle}
             </p>
           )}
@@ -123,7 +126,7 @@ export function SceneManager() {
             />
           </Suspense>
         ) : (
-          <div className="flex items-center justify-center h-full text-white/40 font-data">
+          <div className="flex items-center justify-center h-full font-data" style={{ color: 'var(--theme-scene-text-muted)' }}>
             Awaiting data...
           </div>
         )}
@@ -131,11 +134,12 @@ export function SceneManager() {
 
       {/* Footer */}
       {(currentScene?.footerLeft || currentScene?.footerRight) && (
-        <footer className="relative z-10 flex items-center justify-between px-6 py-3 text-xs text-white/40 shrink-0 font-data">
+        <footer className="relative z-10 flex items-center justify-between px-6 py-3 text-xs shrink-0 font-data" style={{ color: 'var(--theme-footer-text)' }}>
           <span>{currentScene.footerLeft || ''}</span>
           <span>{currentScene.footerRight || ''}</span>
         </footer>
       )}
+    </div>
     </div>
   );
 }
