@@ -6,11 +6,11 @@ import { SceneLayout } from '@/components/voice/SceneLayout';
 import { ControlBar } from '@/components/voice/ControlBar';
 import { ChatPanel } from '@/components/voice/ChatPanel';
 
-const agentName = process.env.NEXT_PUBLIC_AGENT_NAME || 'AI Assistant';
+const agentName = process.env.NEXT_PUBLIC_AGENT_NAME || 'Blue Cross of Idaho';
 
 export const metadata: Metadata = {
-  title: agentName,
-  description: `Talk to ${agentName} - powered by Mobeus`,
+  title: `${agentName} — Health Insurance Plans & Coverage`,
+  description: `Explore Blue Cross of Idaho health insurance plans, coverage options, and pricing. Compare Individual & Family, Medicare, and Employer plans with our AI-powered guide.`,
 };
 
 export default function RootLayout({
