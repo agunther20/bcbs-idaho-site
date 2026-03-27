@@ -114,6 +114,8 @@ export const DSL_SCHEMA: Record<string, { pipeCount: number; fields: string[] }>
     'crow':              { pipeCount: -1, fields: ['val1','val2','...'] },
     'heatmap':           { pipeCount: 2, fields: ['title','cols (semicolon-delimited)'] },
     'hrow':              { pipeCount: -1, fields: ['rowLabel','val1','val2','...'] },
+    // ── JSON-inline types (too deeply nested for pipe-delimited DSL) ──
+    'plan-comparison':   { pipeCount: -1, fields: ['JSON object with title, tiers, highlightBest, defaultTier'] },
 };
 
 // ── Container → item prefix map ───────────────────────────────────────────────
@@ -149,6 +151,10 @@ const FLAT_TYPES        = new Set([
     'stat', 'callout', 'person-card', 'relationship-card',
     'incident-card', 'info-card', 'country-card', 'image-card',
 ]);
+
+// Card types whose props are too deeply nested for pipe-delimited DSL.
+// These accept JSON-inline: plan-comparison|{"title":"...","tiers":[...]}
+const JSON_INLINE_TYPES = new Set(['plan-comparison']);
 
 // ── Item parsers ──────────────────────────────────────────────────────────────
 function parseItem(prefix: string, fields: string[]): Record<string, any> | null {
@@ -592,6 +598,24 @@ export function parseDSL(raw: string): ParsedDSL {
             containerMeta  = parseContainerHeader(prefix, fields);
             containerSpan  = hasSpan ? 'full' : undefined;
             containerItems = [];
+            continue;
+        }
+
+        // JSON-inline card types (deeply nested, not pipe-delimited)
+        if (JSON_INLINE_TYPES.has(prefix)) {
+            flush();
+            // Everything after the first pipe is JSON
+            const jsonStr = effectiveLine.slice(effectiveLine.indexOf('|') + 1).trim();
+            if (jsonStr) {
+                try {
+                    const parsed = JSON.parse(jsonStr);
+                    const card: CardDef = { type: prefix, ...parsed };
+                    if (hasSpan) card.span = 'full';
+                    result.cards.push(card);
+                } catch (e) {
+                    console.warn(`[parseDSL] Failed to parse JSON for "${prefix}":`, e);
+                }
+            }
             continue;
         }
 
